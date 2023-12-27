@@ -1,0 +1,126 @@
+.user-instructions-edit-container {
+  width: calc(100% - 30px);
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 15px 15px;
+
+  .user-instructions-header {
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .user-instructions-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .user-instructions-edit-info {
+      width: 50%;
+      min-height: 100vh;
+      border-right: 1px solid #eee;
+      padding-right: 50px;
+    }
+
+    .user-instructions-preivew {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .preivew-content {
+        width: 80%;
+        background-color: #fff;
+
+        .preivew-header {
+          width: 100%;
+          height: max-content;
+        }
+
+        .preview-service {
+          width: 95%;
+          // height: 120px;
+          border: 1px solid #000;
+          margin: 20px 2.5%;
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          padding: 15px 10px 15px 47px;
+
+          .preview-service-img {
+            width: 100px;
+            height: 100px;
+            margin-right: 15px;
+          }
+
+          .preview-service-info {
+            width: 425px;
+            color: #000;
+
+            // border: 1px solid red;
+            .service-info-hot {
+              font-size: 32px;
+              font-weight: 800;
+              display: flex;
+              align-items: center;
+              text-align: center;
+              margin-top: 5px;
+              letter-spacing: 2px;
+
+              > span {
+                color: #b70000;
+              }
+            }
+
+            .service-info-time {
+              width: 100%;
+              // text-align: center;
+              font-size: 16px;
+              font-weight: 800;
+              padding-left: 10px;
+            }
+
+            .service-info-desc {
+              // width: 100%;
+              // text-align: center;
+              font-size: 14px;
+              // font-weight: 800;
+            }
+          }
+        }
+
+        .preivew-info-box {
+          width: 100%;
+
+          .preivew-info-title {
+            width: 100%;
+            height: 60px;
+            background-color: #eb6100;
+            text-align: center;
+            color: #fff;
+            font-size: 36px;
+            line-height: 60px;
+            font-weight: 800;
+
+            > span {
+              font-weight: 400;
+              margin-left: 10px;
+            }
+          }
+
+          .preivew-info-content {
+            width: 100%;
+            padding: 20px 0;
+          }
+        }
+
+        .preivew-info-box-hidden {
+          visibility: hidden;
+          position: absolute;
+        }
+      }
+    }
+  }
+}

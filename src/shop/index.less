@@ -1,0 +1,186 @@
+@import '../style/theme.less';
+
+.shop-qrcode {
+  width: 150px;
+  height: 150px;
+  margin-top: 160px;
+}
+
+.shop-btn {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shop-text-content {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 350px;
+  word-break: break-all;
+}
+
+.shop-text-content-long {
+  width: 450px;
+
+  button {
+    padding-left: 0;
+  }
+}
+
+.shop-text-phone {
+  color: @main-color;
+}
+
+.shop-auth-box {
+  min-height: calc(100vh - 200px);
+  position: relative;
+}
+
+.shop-status-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 290px);
+}
+
+.shop-auth-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.shop-auth-icon {
+  width: 280px;
+  height: 245px;
+  margin-bottom: 30px;
+}
+
+.shop-status-bottom {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 20px;
+  width: calc(100% - 150px);
+  height: 50px;
+  text-align: center;
+}
+
+.shop-center-col {
+  text-align: center;
+}
+
+.spin-div {
+  height: calc(100vh - 130px);
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shop-agree-modal-tip {
+  margin-top: 32px;
+  color: @main-color;
+}
+
+.shop-contract {
+  padding-bottom: 50px;
+
+  article {
+    text-indent: 28px;
+    line-height: 30px;
+
+    img {
+      width: 160px;
+    }
+
+    .ant-form-item-control {
+      line-height: 28px;
+
+      input {
+        border: none;
+        border-bottom: 1px solid;
+        border-radius: 0;
+        height: 22px;
+      }
+
+      .ant-input:focus {
+        box-shadow: none;
+      }
+
+      .ant-calendar-picker-icon {
+        display: none;
+      }
+
+      .ant-calendar-picker {
+        text-indent: 0;
+      }
+
+      .ant-radio-group {
+        text-indent: 0;
+        padding-left: 12px;
+      }
+    }
+
+    .ant-form-item {
+      margin-right: 0;
+    }
+
+    .shop-contract-underline {
+      text-decoration-line: underline;
+    }
+  }
+
+  .shop-contract-title {
+    text-indent: 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .shop-contract-bold {
+    font-weight: bold;
+  }
+
+  .shop-contract-title-left {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .shop-contract-center {
+    text-align: center;
+  }
+
+  .shop-contract-noindent {
+    text-indent: 0;
+  }
+
+  .shop-contract-doubleindent {
+    text-indent: 56px;
+  }
+
+  .shop-contract-footer {
+    width: calc(100% - 180px);
+    background-color: white;
+    height: 50px;
+    position: fixed;
+    bottom: 63px;
+    left: 155px;
+    line-height: 50px;
+  }
+
+  .shop-contract-tips {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+.shop-contract-content {
+  padding: 30px 75px 50px 75px;
+  background: #ffffff;
+  border: 1px solid #e9e9e9;
+  height: calc(100vh - 210px);
+  overflow-y: auto;
+}
+
+.signature-canvas {
+  border: 1px solid #e8e8e8;
+}

@@ -1,0 +1,47 @@
+/*使用 compact 模式时*/
+.inputGroupTitle{
+    padding: 0 11px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 30px;
+    color: rgba(0, 0, 0, 0.65);
+    text-align: center;
+    background-color: #fafafa;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all .3s;
+    display: inline-block;
+}
+form .ant-input-group-compact{
+    position: relative;
+    top:4px;
+    .ant-input-number:hover .ant-input-number-handler-wrap{
+        display: none;
+    }
+    .ant-input-number{
+        margin-right: 0;
+        margin-left: -1px;
+    }
+    .ant-input-number:last-child{
+         border-left: 0;
+     }
+}
+
+.ant-form-item-control .ant-input-group {
+    .ant-input.inputGroupMin{
+            width: 100px;
+            text-align: center;
+        }
+    .ant-input.inputGroupLabel{
+            width: 30px;
+            border-left: 0;
+            pointer-events: none;
+            background-color: #fff;
+        }
+    .ant-input.inputGroupMax{
+            width: 100px;
+            text-align: center;
+            border-left: 0;
+            border-left: none;
+        }
+}

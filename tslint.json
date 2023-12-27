@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "no-console": {
+      "severity": "warning",
+      "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+    },
+    "no-eval": true,
+    "quotemark": [true, "single", "jsx-double", "avoid-template"]
+  }
+}

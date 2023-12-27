@@ -1,0 +1,65 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": "58",
+          "ie": "10",
+          "esmodules": false
+        }
+      }
+    ],
+    [
+      "react-app",
+      {
+        "flow": false,
+        "typescript": true
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ],
+    "lodash",
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "alias": {
+          "@/webapi": "./web_modules/webapi",
+          "api": ["./web_modules/api"],
+          "@/redux": "./src/redux",
+          "@/pages": "./src/pages",
+          "wmkit": "./web_modules/wmkit",
+          "qmkit": "./web_modules/qmkit",
+          "biz": "./web_modules/biz",
+          "wmservice": "./web_modules/wmservice",
+          "wmui": "./web_modules/wmui"
+        }
+      }
+    ],
+    "@babel/plugin-syntax-dynamic-import"
+  ]
+}

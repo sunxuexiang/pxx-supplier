@@ -1,0 +1,138 @@
+.infoDetail-layout {
+  background-color: #fafafa;
+  min-height: 100vh;
+  position: relative;
+
+  .infoDetail-content {
+    height: auto;
+    background-color: white;
+
+    .infoDetail-header {
+      width: 1226px;
+      height: 40px;
+      margin: 0 auto;
+      line-height: 40px;
+      text-align: right;
+      border-bottom: 1px solid #eee;
+
+      span {
+        margin-right: 12px;
+        color: #999;
+      }
+    }
+
+    .infoDetail-nav {
+      width: 1226px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+
+      img {
+        width: auto;
+        height: 60px;
+      }
+
+      .infoDetail-nav-search {
+        border: 2px solid #151515;
+
+        .ant-input {
+          border: none;
+        }
+
+        .ant-input-group-addon {
+          border: none;
+
+          .ant-btn {
+            width: 100%;
+            border-radius: 0;
+            border: none;
+            background-color: black;
+          }
+
+          i {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .topShopcart {
+        text-align: center;
+        height: 36px;
+
+        .shopcartTop {
+          width: 110px;
+          height: 36px;
+          line-height: 36px;
+          border: 1px solid #ddd;
+
+          i {
+            color: #666;
+            font-size: 18px;
+            vertical-align: -2px;
+          }
+
+          .icon-gouwuche:before {
+            content: '\e656';
+          }
+
+          .cart_name {
+            color: #666;
+          }
+
+          .cart_num {
+            color: #fff;
+            display: inline-block;
+            width: 20px;
+            line-height: 20px;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .infoDetail-page-content {
+    width: 1226px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    min-height: calc(100vh - 200px);
+
+    .infoDetail-time {
+      color: #89909e;
+      margin-bottom: 12px;
+    }
+
+    .infoDetail-page-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .infoDetail-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #fafafa;
+
+    .infoDetail-footer-conent {
+      width: 1226px;
+      margin: 0 auto;
+      color: #b5b5b5;
+
+      .ant-btn-link {
+        color: #b5b5b5;
+        padding-left: 0;
+      }
+
+      .ant-btn-link:hover {
+        color: #ff9147;
+      }
+    }
+  }
+}

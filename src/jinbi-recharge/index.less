@@ -1,0 +1,47 @@
+@import '../style/theme.less';
+
+.jr-detail {
+  min-height: calc(100vh - 400px);
+  position: relative;
+  padding-bottom: 32px;
+
+  p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+
+    button {
+      margin-right: 16px;
+    }
+  }
+
+  .jr-detail-money {
+    color: @main-color;
+  }
+
+  .jr-detail-botton {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+  }
+
+  .jr-detail-imgbox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    .jr-detail-imgitem {
+      margin: 0 16px;
+      padding: 12px;
+      text-align: center;
+      word-break: break-all;
+
+      img {
+        width: 260px;
+        height: 260px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

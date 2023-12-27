@@ -1,0 +1,52 @@
+{
+  "type": "h5-redux",
+  "api": {
+    "swaggerUrl": "http://172.19.26.161:8490/v2/api-docs",
+    "dir": "./web_modules/api",
+    "mock": {
+      "mockApi": {
+        "PetOrderController": [
+          "customerPage",
+          "queryCount"
+        ],
+        "PetRecordController": [
+          "page"
+        ]
+      },
+      "ignoreApi": {}
+    },
+    "exclude": [
+      "SmsSupplierController",
+      "CaptchaController",
+      "ResourceServerController",
+      "StoreExpressCompanyController",
+      "CheckAuthController",
+      "PayCallbackController",
+      "CustomerController",
+      "FreightTemplateController",
+      "EmployeeReportController",
+      "ImageServerController",
+      "StoreExpressCompanyController",
+      "MarketingController",
+      "CustomerDetailController",
+      "CustomerDistrReportController",
+      "CustomerDrawCashController",
+      "EmployeeBaseController",
+      "EmployeeController",
+      "InvoiceProjectBaseController",
+      "MarketingController",
+      "PayManageController",
+      "RefundOrderController",
+      "ReturnOrderController",
+      "RoleInfoController",
+      "StoreCustomerLevelController",
+      "StoreEvaluateController",
+      "StoreImageCateController",
+      "StoreResourceCateController",
+      "SwitchController",
+      "TradeController",
+      "TradeReportController",
+      "TradeSettingController"
+    ]
+  }
+}

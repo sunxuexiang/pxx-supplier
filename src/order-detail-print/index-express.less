@@ -1,0 +1,215 @@
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    -moz-print-color-adjust: exact;
+    -ms-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page {
+    size: 75mm 130mm;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+@multiple: 0.5;
+
+.express {
+  display: flex;
+  flex-direction: column;
+  width: 75mm;
+  height: 130mm;
+  background-color: white;
+
+  &-top {
+    padding: 1mm 4mm;
+  }
+
+  &-owned-img {
+    margin-top: 2mm;
+    width: @multiple * 66mm;
+    height: @multiple * 18mm;
+    object-fit: contain;
+  }
+
+  &-other-img {
+    width: @multiple * 32mm;
+    height: @multiple * 12mm;
+  }
+
+  .qr-ct {
+    padding-top: 1mm;
+    width: 26mm;
+  }
+
+  .qr-code {
+    width: @multiple * 50mm;
+    height: @multiple * 50mm;
+  }
+
+  .qr-code-text {
+    font-size: @multiple * 8mm;
+    transform: scale(0.5);
+  }
+
+  .bar-ct {
+    flex: 1;
+  }
+
+  .bar-code-ct {
+    // margin-top: @multiple * 3mm;
+  }
+
+  .bar-code {
+    height: 12mm;
+    width: 68mm;
+    margin-left: 2mm;
+  }
+
+  .current-order-text {
+    font-size: 7mm;
+    word-break: break-all;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .bar-code-text {
+    font-size: 4mm;
+  }
+
+  &-three {
+    font-weight: bold;
+    font-size: 6mm;
+    padding-left: 1mm;
+    padding-right: 4mm;
+  }
+
+  &-three-2 {
+    font-size: @multiple * 7mm;
+    padding-left: @multiple * 4mm;
+  }
+
+  &-four {
+    padding: 2mm 0;
+    // max-height: 50mm;
+    // overflow: hidden;
+  }
+
+  .four-receiver-ct {
+    width: @multiple * 16mm;
+    height: @multiple * 16mm;
+    line-height: @multiple * 16mm;
+    background-color: black;
+    border-radius: @multiple * 16mm;
+    color: white;
+    font-family: Source Han Sans SC-Bold, Source Han Sans SC;
+    font-size: @multiple * 12mm;
+    text-align: center;
+    margin: @multiple * 7mm;
+    margin-left: @multiple * 4mm;
+  }
+
+  .four-receiver-text {
+    font-family: Arial-Regular, Arial;
+    font-size: @multiple * 8mm;
+    padding-right: 4mm;
+    font-weight: 400;
+  }
+
+  &-five {
+    padding-right: @multiple * 10mm;
+  }
+
+  &-five-title {
+    width: @multiple * 16mm;
+    height: @multiple * 16mm;
+    line-height: @multiple * 16mm;
+    border: 0.5mm solid black;
+    text-align: center;
+    font-size: @multiple * 12mm;
+    font-family: Source Han Sans SC-Regular, Source Han Sans SC;
+    border-radius: @multiple * 16mm;
+    margin: @multiple * 4mm;
+  }
+
+  .express-owned-text {
+    font-size: @multiple * 6mm;
+    font-family: Source Han Sans SC-Bold, Source Han Sans SC;
+  }
+
+  .express-owned-text-2 {
+    font-size: @multiple * 6mm;
+    font-family: Source Han Sans SC-Bold, Source Han Sans SC;
+    width: 46mm;
+    white-space: nowrap;
+    transform: scale(0.7);
+    transform-origin: left center;
+  }
+
+  .dbj-logo {
+    width: @multiple * 50mm;
+    height: @multiple * 12mm;
+  }
+
+  .five-qr-code {
+    width: @multiple * 44mm;
+    height: @multiple * 44mm;
+    margin-top: @multiple * 1mm;
+    margin-bottom: @multiple * 1mm;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .five-ad-title {
+    font-size: @multiple * 8mm;
+    flex: 1;
+  }
+
+  .five-ad {
+    background-color: #221714;
+    color: white;
+    border-radius: 1mm;
+    text-align: center;
+    margin-top: 1mm;
+    margin-bottom: 1mm;
+  }
+
+  &-six {
+    font-family: Source Han Sans SC-Bold, Source Han Sans SC;
+    font-size: @multiple * 12mm;
+    color: black;
+    padding-left: @multiple * 4mm;
+    padding-top: @multiple * 2mm;
+    padding-bottom: @multiple * 2mm;
+  }
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.dashed {
+  border-bottom: 0.5mm solid black;
+}
+
+.right-dashed {
+  border-right: 0.5mm solid black;
+}

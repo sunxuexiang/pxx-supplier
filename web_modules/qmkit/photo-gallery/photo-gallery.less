@@ -1,0 +1,33 @@
+.photo-gallery-modal {
+  width: 100%;
+  .photo-gallery-modal-head {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+  }
+  .photo-cate-list {
+    width: 100%;
+    padding-right: 10px;
+    border-right: 1px solid #eee;
+  }
+  .photo-cate-img-check {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  .photo-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 120px);
+    grid-template-rows: repeat(3, 160px);
+    gap: 20px 20px;
+    .img-desc {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

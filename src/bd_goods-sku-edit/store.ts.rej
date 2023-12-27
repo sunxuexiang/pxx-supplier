@@ -1,0 +1,6 @@
+diff a/src/goods-sku-edit/store.ts b/src/goods-sku-edit/store.ts	(rejected hunks)
+@@ -586,2 +591,2 @@ export default class AppStore extends Store {
+-    var isfalse = false;
+-    arrea.forEach(el => {
++    let isfalse = false;
++    arrea.forEach((el) => {

@@ -1,0 +1,335 @@
+import React from 'react'
+import {Row, Col, Radio} from "antd";
+
+import ReactEcharts from 'echarts-for-react'
+
+import moment from 'moment'
+
+
+const RadioButton = Radio.Button;
+const RadioGroup = Radio.Group;
+
+interface WMChartProps {
+  title: string
+  startTime: Date
+  endTime: Date
+  dataDesc: Array<
+    {
+      title: string
+      key: string
+      icon?: string
+      textColor?: string
+    }>
+  content: Array<any>
+  height?: number
+  multiYAxis?: boolean
+}
+
+
+enum rangeType {
+  day,
+  week,
+  month
+}
+
+export default class WMChart extends React.Component<WMChartProps, any> {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      monthDisabled: true,
+      weekDisabled: true,
+      currentRange: rangeType.day
+    }
+  }
+
+  componentWillMount(){
+    //渲染折线图跨度按钮显示状态
+    this._renderDateRange();
+  }
+
+  render() {
+    const {title, height} = this.props;
+
+    //容器高度
+    const chartHeight = height || 400;
+
+    //获取X轴数据
+    const xAxisArray = this._renderXAxisArray();
+
+    //获取表格数据
+    const seriesJson = this._parseDataToRange(xAxisArray);
+
+    //获取折线图需要的数据
+    const option = this._renderChartData(xAxisArray, seriesJson);
+
+    return (
+      <div style={styles.content}>
+        <Row>
+          <Col span={4}><h4 style={styles.h4}>{title}</h4></Col>
+          <Col span={20} style={{textAlign: 'right'}}>
+            <RadioGroup value={this.state.currentRange} onChange={(e) => this._changeRange(e)}>
+              <RadioButton value={rangeType.day}>按天</RadioButton>
+              <RadioButton value={rangeType.week} disabled={this.state.weekDisabled}>按周</RadioButton>
+              <RadioButton value={rangeType.month} disabled={this.state.monthDisabled}>按月</RadioButton>
+            </RadioGroup>
+          </Col>
+        </Row>
+
+        <div style={{height: {chartHeight}}}>
+          <div>
+            <ReactEcharts
+              option={option}
+              style={{height: `${chartHeight}px`, width: '100%'}}
+              className='react_for_echarts'/>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
+  _changeRange = (e) => {
+    this.setState({currentRange: e.target.value});
+  }
+
+
+  _renderDateRange = () => {
+    const startStamp = this.props.startTime.getTime();
+    const endStamp = this.props.endTime.getTime();
+    const range = endStamp - startStamp;
+    if (range > 0) {
+      if (range > 8 * 24 * 60 * 60 * 1000) {
+        this.setState({weekDisabled: false});
+      }
+      if (range > 32 * 24 * 60 * 60 * 1000) {
+        this.setState({monthDisabled: false});
+      }
+    }
+  }
+
+
+  _renderChartData = (xAxisArray, seriesJson) => {
+    const legend = this._renderLegend();
+
+    let yAxis;
+    let seriesArray = new Array();
+    if (this.props.multiYAxis && legend.length > 1){
+      yAxis = [];
+      for(let i = 0 ; i < 2 ; i++){
+        yAxis.push({name: legend[i]['name'], type: 'value'});
+      }
+    }else{
+      yAxis = {type : 'value'};
+    }
+
+    let count = 0;
+    for (let object in seriesJson){
+      if (this.props.multiYAxis && count == 1){
+        seriesArray.push({name: object, type:'line', yAxisIndex: 1, data: seriesJson[object]});
+      }else{
+        seriesArray.push({name: object, type:'line', data: seriesJson[object]});
+      }
+      count++;
+    }
+
+    let option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          animation: false,
+          label: {
+            backgroundColor: '#505765'
+          }
+        }
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        },
+        right: '0%'
+      },
+      legend: {
+        data: legend
+      },
+      grid: {
+        left: '3%',
+        right: '3%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: FORMAT_XAXIS(xAxisArray)
+      },
+      yAxis: yAxis,
+      series: seriesArray
+    };
+    return option;
+  }
+
+
+  _renderLegend = () => {
+    const {dataDesc} = this.props;
+    //组装图例
+    const legendArray = new Array();
+    dataDesc.forEach((value) => {
+      let dataObject: any = {name: value.title};
+      if (value.icon) {
+        dataObject.icon = value.icon;
+      }
+      if (value.textColor) {
+        dataObject.testStyle = {color: value.textColor};
+      }
+      legendArray.push(dataObject);
+    });
+    return legendArray;
+  }
+
+
+  _parseDataToRange = (xAxisArray) => {
+
+    const {content, dataDesc} = this.props;
+    const dateJson = {};
+    content.forEach((value) => {
+      dateJson[new Date(value['date']).getTime()] = value;
+    });
+
+    let seriesJson = {};
+    xAxisArray.forEach((xAxis) => {
+      dataDesc.forEach((data) => {
+        let seriesArray;
+        if (seriesJson[data['title']]){
+          seriesArray = seriesJson[data['title']]
+        }else{
+          seriesArray = new Array();
+          seriesJson[data['title']] = seriesArray;
+        }
+        const propKey = data.key;
+        if (xAxis instanceof Date) {//日
+          if (dateJson[xAxis.getTime()]){
+            seriesArray.push(dateJson[xAxis.getTime()][propKey]);
+          } else {
+            seriesArray.push(0);
+          }
+        } else {//月+周
+          const startTime = xAxis['start'].getTime();
+          const endTime = xAxis['end'].getTime();
+          let sum = 0;
+          for (let date in dateJson){
+            if (date >= startTime && date <= endTime){
+              sum += dateJson[date][propKey];
+            }
+          }
+          seriesArray.push(sum);
+        }
+      });
+    });
+
+    return seriesJson;
+  }
+
+
+  _renderXAxisArray = () => {
+    const {startTime, endTime} = this.props;
+    const currentRange = this.state.currentRange;
+    if (currentRange == rangeType.day) {//日
+      return GROUP_BY_DAY(startTime, endTime);
+    } else if (currentRange == rangeType.week) {//周
+      return GROUP_BY_WEEK(startTime, endTime);
+    } else {//月
+      return GROUP_BY_MONTH(startTime, endTime);
+    }
+  }
+}
+
+function GROUP_BY_DAY(startTime, endTime) {
+  const resultArray = new Array();
+  let nextDay = startTime.getTime();
+  resultArray.push(startTime);
+  while (true) {
+    nextDay += 24 * 60 * 60 * 1000;
+    if (nextDay > endTime.getTime()) {
+      break;
+    } else {
+      resultArray.push(new Date(nextDay));
+    }
+  }
+  return resultArray;
+}
+
+function GROUP_BY_WEEK(startTime, endTime) {
+  const resultArray = new Array();
+  let nextDay = startTime.getTime();
+  let nextWeek = {};
+  nextWeek['start'] = startTime;
+  while (true) {
+    if (nextDay > endTime.getTime()) {
+      if (nextWeek['start']) {
+        nextWeek['end'] = endTime;
+        resultArray.push(nextWeek);
+      }
+      break;
+    } else {
+      if (new Date(nextDay).getDay() == 1) {
+        nextWeek['start'] = new Date(nextDay);
+      } else if (new Date(nextDay).getDay() == 0) {
+        nextWeek['end'] = new Date(nextDay);
+        resultArray.push(nextWeek);
+        nextWeek = {};
+      }
+    }
+    nextDay += 24 * 60 * 60 * 1000;
+  }
+  return resultArray;
+}
+
+function GROUP_BY_MONTH(startTime, endTime) {
+  const resultArray = new Array();
+  let nextMonth = {};
+  let startOfThisMonth = startTime;
+  while (true) {
+    let endOfThisMonth = new Date(startOfThisMonth.getFullYear(), startOfThisMonth.getMonth() + 1, 0);
+    const startOfNextMonth = new Date(endOfThisMonth.getFullYear(), endOfThisMonth.getMonth() + 1, 1);
+    if (endOfThisMonth > endTime) {
+      nextMonth['start'] = startOfThisMonth;
+      nextMonth['end'] = endTime;
+      resultArray.push(nextMonth);
+      nextMonth = {};
+      break;
+    } else {
+      nextMonth['start'] = startOfThisMonth;
+      nextMonth['end'] = endOfThisMonth;
+      resultArray.push(nextMonth);
+      nextMonth = {};
+    }
+    startOfThisMonth = startOfNextMonth;
+  }
+  return resultArray;
+}
+
+function FORMAT_XAXIS(xAxisArray){
+  let resultArray = new Array();
+  xAxisArray.forEach((value) => {
+    if (value instanceof Date){
+      resultArray.push(moment(value).format("MM/DD"));
+    }else{
+      resultArray.push(`${moment(value.start).format("YYYY/MM/DD")}~${moment(value.end).format("YYYY/MM/DD")}`)
+    }
+  });
+  return resultArray;
+}
+
+const styles = {
+  content: {
+    background: '#ffffff',
+    padding: 20,
+    marginTop: 10
+  },
+  h4: {
+    fontSize: 14,
+    color: '#333333',
+  }
+}

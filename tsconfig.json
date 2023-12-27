@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es5", "es6", "dom", "es7", "esnext"],
+    "module": "esnext",
+    "sourceMap": false,
+    "noImplicitAny": false,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "rootDirs": ["src", "web_modules", "."],
+    "paths": {
+      "qmkit": ["web_modules/qmkit"],
+      "biz": ["web_modules/biz"],
+      "wmservice/*": ["web_modules/wmservice/*"],
+      "api": ["web_modules/api"],
+      "api/*": ["web_modules/api/*"],
+      "wmkit": ["web_modules/wmkit"],
+      "wmkit/*": ["web_modules/wmkit/*"],
+      "wmui/*": ["web_modules/wmui/*"],
+      "uikit/*": ["./uikit/*"],
+      "@/typings": ["./typings"],
+      "typings": ["./typings"],
+      "@/*": ["./src/*"],
+      "components/*": ["./components/*"]
+    },
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "exclude": ["node_modules", "dist"],
+  "awesomeTypescriptLoaderOptions": {
+    "useCache": true,
+    "useBabel": true,
+    "isolatedModules": true,
+    "forceIsolatedModules": true,
+    "transpileOnly": true,
+    "reportFiles": ["src/**/*.{ts,tsx}", "web_modules/**/*.{ts,tsx}"]
+  }
+}

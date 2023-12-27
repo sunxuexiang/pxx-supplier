@@ -1,0 +1,43 @@
+.wm-video-js {
+  .videoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+  }
+  /*暂停时显示播放按钮*/
+  .vjs-paused .vjs-big-play-button,
+  .vjs-paused.vjs-has-started .vjs-big-play-button {
+    display: block;
+  }
+  /*播放按钮变○圆形*/
+  .video-js .vjs-big-play-button {
+    font-size: 3.7rem;
+    line-height: 3.4rem;
+    height: 3.4rem;
+    width: 3.4rem;
+    border-radius: 3.7rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0.04rem solid rgba(255, 255, 255, 0.5);
+    margin-top: -1.7rem;
+    margin-left: -1.7rem;
+  }
+  /* 中间的播放箭头 */
+  .vjs-big-play-button .vjs-icon-placeholder {
+    font-size: 2rem;
+  }
+  /* 加载圆圈 */
+  .vjs-loading-spinner {
+    font-size: 0.6rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 0.6rem;
+    margin-top: -0.6rem;
+    margin-left: -0.6rem;
+  }
+}

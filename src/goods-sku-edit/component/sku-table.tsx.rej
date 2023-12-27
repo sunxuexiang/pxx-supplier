@@ -1,0 +1,4 @@
+diff a/src/goods-sku-edit/component/sku-table.tsx b/src/goods-sku-edit/component/sku-table.tsx	(rejected hunks)
+@@ -117 +117 @@ class SkuForm extends React.Component<any, any> {
+-    var tProps = {
++    let tProps = {

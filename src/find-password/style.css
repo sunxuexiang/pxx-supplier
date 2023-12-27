@@ -1,0 +1,112 @@
+.process-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+.process-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.process-item i {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.process-line {
+  width: 110px;
+  height: 1px;
+  background-color: #e9e9e9;
+}
+
+.item-01 i {
+  background-image: url(./img/phone.png);
+}
+
+.item-02 i {
+  background-image: url(./img/user_grey.png);
+}
+
+.item-03 i {
+  background-image: url(./img/key_grey.png);
+}
+
+.item-04 i {
+  background-image: url(./img/face_grey.png);
+}
+
+.process-01 .item-01 {
+  color: #000;
+}
+
+.process-02 {
+  .item-02 {
+    color: #000;
+
+    i {
+      background-image: url(./img/user.png);
+    }
+  }
+
+  .process-line:nth-child(2) {
+    background-color: #f56c1d;
+  }
+}
+
+.process-03 {
+  .item-02 {
+    i {
+      background-image: url(./img/user.png);
+    }
+  }
+
+  .item-03 {
+    color: #000;
+
+    i {
+      background-image: url(./img/key.png);
+    }
+  }
+
+  .process-line:nth-child(2),
+  .process-line:nth-child(4) {
+    background-color: #f56c1d;
+  }
+}
+
+.process-04 {
+  .item-02 {
+    i {
+      background-image: url(./img/user.png);
+    }
+  }
+
+  .item-03 {
+    i {
+      background-image: url(./img/key.png);
+    }
+  }
+
+  .item-04 {
+    color: #000;
+
+    i {
+      background-image: url(./img/face.png);
+    }
+  }
+
+  .process-line:nth-child(2),
+  .process-line:nth-child(4),
+  .process-line:nth-child(6) {
+    background-color: #f56c1d;
+  }
+}
